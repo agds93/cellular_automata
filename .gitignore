@@ -1,3 +1,9 @@
+# codeblocks
+*.cdb
+*.depend
+obj/*
+bin/*
+
 # Prerequisites
 *.d
 
