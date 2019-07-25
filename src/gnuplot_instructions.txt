@@ -1,4 +1,19 @@
 
+#Regola 30:
+
+gnuplot
+set xlabel "x"
+set ylabel "t"
+unset title
+unset key
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set term 'pdf' color
+set out 'rule30.pdf'
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set out
+q
+
+
 #Regola 90:
 
 gnuplot
@@ -9,6 +24,21 @@ unset key
 plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
 set term 'pdf' color
 set out 'rule90.pdf'
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set out
+q
+
+
+#Regola 110:
+
+gnuplot
+set xlabel "x"
+set ylabel "t"
+unset title
+unset key
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set term 'pdf' color
+set out 'rule110.pdf'
 plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
 set out
 q
