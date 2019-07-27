@@ -41,6 +41,9 @@ int main()
     	for(i=0;i<N;i++) c[i]=ctemp[i];
   	}
 	fclose(risultati);
+	
+	free(c);
+	free(ctemp);
 
 	exit(0);
 }
