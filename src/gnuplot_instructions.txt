@@ -57,3 +57,33 @@ set out 'rule150.pdf'
 plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
 set out
 q
+
+
+#Gioco della vita (inizio):
+
+gnuplot
+set xlabel "riga"
+set ylabel "colonna"
+unset title
+unset key
+plot "risultati.dat" u 1:2 pt 1 ps 1 lc "red"
+set term 'pdf' color
+set out 'GOL.pdf'
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set out
+q
+
+
+#Gioco della vita (dopo tempo tmax):
+
+gnuplot
+set xlabel "riga"
+set ylabel "colonna"
+unset title
+unset key
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set term 'pdf' color
+set out 'GOL.pdf'
+plot "risultati.dat" u 1:2 pt 7 ps 0.1 lc "red"
+set out
+q
