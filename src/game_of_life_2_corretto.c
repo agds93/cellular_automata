@@ -10,6 +10,7 @@ long M,N; /*numero di righe e colonne*/
 long tmax; /*numero di generazioni*/
 char r;
 int **c; /*matrice della configurazione*/
+int **ctemp; /*matrice temporanea della configurazione*/
 punto *p;
 FILE *config; /*file con la configurazione iniziale*/
 FILE *risultati; /*file con l'evoluzione della precedente*/
@@ -27,7 +28,7 @@ void disegno() /*disegna una configurazione di punti*/
 {
     int imax,i;
     config=fopen("config.dat","w");
-	if(r=='1')
+	if(r=='1') /*Pentomino-R*/
     {
         imax=5;
         p=calloc(imax,sizeof(punto));
@@ -37,7 +38,7 @@ void disegno() /*disegna una configurazione di punti*/
 		p[3].x=2; p[3].y=1;
 		p[4].x=2; p[4].y=2;
     }
-    if(r=='2')
+    if(r=='2') /*Tetramino-T*/
     {
         imax=4;
         p=calloc(imax,sizeof(punto));
@@ -50,9 +51,9 @@ void disegno() /*disegna una configurazione di punti*/
     {
         c[p[i].x][p[i].y]=1;
         fprintf(config,"%d %d\n",p[i].x,p[i].y);
+        ctemp[p[i].x][p[i].y]=c[p[i].x][p[i].y];
     }
 }
-
 
 void inizio() /*definisce i parametri e la configurazione iniziali*/
 {
@@ -81,6 +82,7 @@ void inizio() /*definisce i parametri e la configurazione iniziali*/
 	}
 
     c=matrice(M,N);
+	ctemp=matrice(M,N);
 
     printf("Le possibili configurazioni iniziali sono: \n");
 	printf("1) Pentomino-R\n");
@@ -98,24 +100,9 @@ void inizio() /*definisce i parametri e la configurazione iniziali*/
 
 void regole(int sum,int i,int j) /*regole da Poundstone W.,The Recursive Universe,New York,Dover Publications,2013*/
 {
-    if(sum==2)
-    {
-        if(c[i][j]==1) c[i][j]=1;
-        if(c[i][j]==0) c[i][j]=0;
-    }
+    if(sum==2) c[i][j]=ctemp[i][j];
     else if(sum==3) c[i][j]=1;
     else c[i][j]=0;
-    /*sono equivalenti a
-    if(c[i][j]==1)
-	{
-		if(sum==2 || sum==3) c[i][j]=1;
-        else c[i][j]=0;
-	}
-	if(c[i][j]==0)
-	{
-		if(sum==3) c[i][j]=1;
-		else c[i][j]=0;
-	}*/
 }
 
 void gioco() /*evolve il sistema e stampa su file*/
@@ -138,15 +125,15 @@ void gioco() /*evolve il sistema e stampa su file*/
                         if(a==0 && b==0) continue;
                         x=i+a;
                         y=j+b;
-                        if(x>=0 && x<M && y>=0 && y<N) sum+=c[x][y];
+                        if(x>=0 && x<M && y>=0 && y<N) sum+=ctemp[x][y];
                     }
                 }
+                ctemp[i][j]=c[i][j];
                 regole(sum,i,j);
-                if(c[i][j]==1) fprintf(risultati,"%i %i %i\n",i,j,t);
+				if(c[i][j]==1) fprintf(risultati,"%i %i %i\n",i,j,t);
             }
         }
     }
-
 }
 
 int main()
@@ -158,6 +145,7 @@ int main()
 	fclose(config);
     fclose(risultati);
     free(c);
+	free(ctemp);
 	free(p);
 
 	return 0;
