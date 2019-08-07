@@ -82,7 +82,7 @@ void inizio() /*definisce i parametri e la configurazione iniziali*/
 	}
 
     c=matrice(M,N);
-	ctemp=matrice(M,N);
+    ctemp=matrice(M,N);
 
     printf("Le possibili configurazioni iniziali sono: \n");
 	printf("1) Pentomino-R\n");
