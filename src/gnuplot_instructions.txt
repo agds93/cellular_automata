@@ -59,32 +59,61 @@ set out
 q
 
 
-#Gioco della vita (pentomino-R inizio M=N=20 tmax=1):
+
+#Gioco della vita
+
 gnuplot
 set xrange [-1:21]
 set yrange [-1:21]
-#unset xtics
-#unset ytics
+unset xtics
+unset ytics
 unset title
 unset key
-plot "config.dat" u 1:2 pt 4 ps 0.5 lc "red"
+plot "inizio.dat" u 1:2 pt 7 ps 1 lc "red"
 set term 'pdf' color
-set out 'pentominoR_iniz_M20_N20_tmax1.pdf'
-plot "config.dat" u 1:2 pt 4 ps 0.5 lc "red"
+set out 'inizio_M20_N20_tmax1_scelta1.pdf'
+plot "inizio.dat" u 1:2 pt 7 ps 1 lc "red"
 set out
 q
 
-#Gioco della vita (pentomino-R evoluzione M=N=20 tmax=1):
 gnuplot
 set xrange [-1:21]
 set yrange [-1:21]
-#unset xtics
-#unset ytics
+unset xtics
+unset ytics
 unset title
 unset key
-plot "risultati.dat" u 1:2 pt 4 ps 0.5 lc "red"
+plot 'inizio.dat' u 1:2 pt 7 ps 1 lc "red"
 set term 'pdf' color
-set out 'pentominoR_evol_M20_N20_tmax1.pdf'
-plot "risultati.dat" u 1:2 pt 4 ps 0.5 lc "red"
+set out 'inizio_M20_N20_tmax1_scelta2.pdf'
+plot 'inizio.dat' u 1:2 pt 7 ps 1 lc "red"
+set out
+q
+
+gnuplot
+set xrange [-1:21]
+set yrange [-1:21]
+unset xtics
+unset ytics
+unset title
+unset key
+plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+set term 'pdf' color
+set out 'fine_M20_N20_tmax1_scelta1.pdf'
+plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+set out
+q
+
+gnuplot
+set xrange [-1:21]
+set yrange [-1:21]
+unset xtics
+unset ytics
+unset title
+unset key
+plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+set term 'pdf' color
+set out 'fine_M20_N20_tmax1_scelta2.pdf'
+plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
 set out
 q

@@ -1,19 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct{
-   int x;
-   int y;
+typedef struct punto{
+   int x,y;
 }punto;
 
 long M,N; /*numero di righe e colonne*/
 long tmax; /*numero di generazioni*/
-char r;
+char scelta;
 int **c; /*matrice della configurazione*/
 int **ctemp; /*matrice temporanea della configurazione*/
-punto *p;
-FILE *config; /*file con la configurazione iniziale*/
-FILE *risultati; /*file con l'evoluzione della precedente*/
+FILE *parametri,*inizio,*fine;
 
 int** matrice(int M,int N) /*assegna la memoria per una matrice*/
 {
@@ -27,21 +24,20 @@ int** matrice(int M,int N) /*assegna la memoria per una matrice*/
 void disegno() /*disegna una configurazione di punti*/
 {
     int imax,i;
-    config=fopen("config.dat","w");
-	if(r=='1') /*Pentomino-R*/
+    punto p[10];
+    inizio=fopen("inizio.dat","w");
+	if(scelta=='1') /*Pentomino-R*/
     {
         imax=5;
-        p=calloc(imax,sizeof(punto));
 		p[0].x=0; p[0].y=1;
 		p[1].x=1; p[1].y=0;
 		p[2].x=1; p[2].y=1;
 		p[3].x=2; p[3].y=1;
 		p[4].x=2; p[4].y=2;
     }
-    if(r=='2') /*Tetramino-T*/
+    if(scelta=='2') /*Tetramino-T*/
     {
         imax=4;
-        p=calloc(imax,sizeof(punto));
         p[0].x=0; p[0].y=1;
 		p[1].x=1; p[1].y=0;
 		p[2].x=1; p[2].y=1;
@@ -50,51 +46,17 @@ void disegno() /*disegna una configurazione di punti*/
     for(i=0;i<imax;i++)
     {
         c[p[i].x][p[i].y]=1;
-        fprintf(config,"%d %d\n",p[i].x,p[i].y);
+        fprintf(inizio,"%d %d\n",p[i].x,p[i].y);
         ctemp[p[i].x][p[i].y]=c[p[i].x][p[i].y];
     }
 }
 
-void inizio() /*definisce i parametri e la configurazione iniziali*/
+void definizioni() /*definisce i parametri e la configurazione iniziali*/
 {
-    printf("Inserire il numero di righe: ");
-	scanf("%li",&M);
-	while(M<=0)
-	{
-		printf("Il valore deve essere maggiore di zero. Reinserire: ");
-		scanf("%li",&M);
-	}
-
-	printf("Inserire il numero di colonne: ");
-	scanf("%li",&N);
-	while(N<=0)
-	{
-		printf("Il valore deve essere maggiore di zero. Reinserire: ");
-		scanf("%li",&N);
-	}
-
-	printf("Inserire il tempo di esecuzione: ");
-	scanf("%li",&tmax);
-	while(tmax<=0)
-	{
-		printf("Il valore deve essere maggiore di zero. Reinserire: ");
-		scanf("%li",&tmax);
-	}
-
+    inizio=fopen("parametri.dat","r");
+    fscanf(inizio,"%li %li %li %c",&M,&N,&tmax,&scelta);
     c=matrice(M,N);
     ctemp=matrice(M,N);
-
-    printf("Le possibili configurazioni iniziali sono: \n");
-	printf("1) Pentomino-R\n");
-	printf("2) Tetramino-T\n");
-	printf("Scegliere:");
-	scanf(" %c",&r);
-	while(r!='1' && r!='2')
-	{
-		printf("Valore non previsto. Reinserire: ");
-		scanf("%c",&r);
-	}
-
 	disegno();
 }
 
@@ -107,11 +69,10 @@ void regole(int sum,int i,int j) /*regole da Poundstone W.,The Recursive Univers
 
 void gioco() /*evolve il sistema e stampa su file*/
 {
-	risultati=fopen("risultati.dat","w");
-
+	fine=fopen("fine.dat","w");
 	int i,j,t;
     int a,b,x,y,sum;
-    for(t=0;t<tmax;t++)
+    for(t=1;t<=tmax;t++)
     {
         for(i=0;i<M;i++)
         {
@@ -130,7 +91,7 @@ void gioco() /*evolve il sistema e stampa su file*/
                 }
                 ctemp[i][j]=c[i][j];
                 regole(sum,i,j);
-				if(c[i][j]==1) fprintf(risultati,"%i %i %i\n",i,j,t);
+				if(c[i][j]==1) fprintf(fine,"%i %i %i\n",i,j,t);
             }
         }
     }
@@ -138,15 +99,14 @@ void gioco() /*evolve il sistema e stampa su file*/
 
 int main()
 {
-	inizio();
+	definizioni();
 
 	gioco();
 
-	fclose(config);
-    fclose(risultati);
+	fclose(inizio);
+    fclose(fine);
     free(c);
 	free(ctemp);
-	free(p);
 
 	return 0;
 }
