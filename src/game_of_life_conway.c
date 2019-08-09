@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct punto{
+struct punto{
    int x,y;
-}punto;
+};
 
-long M,N; /*numero di righe e colonne*/
-long tmax; /*numero di generazioni*/
+int M,N; /*numero di righe e colonne*/
+int tmax; /*numero di generazioni*/
 char scelta;
 int **c; /*matrice della configurazione*/
 int **ctemp; /*matrice temporanea della configurazione*/
@@ -24,24 +24,26 @@ int** matrice(int M,int N) /*assegna la memoria per una matrice*/
 void disegno() /*disegna una configurazione di punti*/
 {
     int imax,i;
-    punto p[10];
+    int x0=0.5*M;
+    int y0=0.5*N;
+    struct punto p[10];
     inizio=fopen("inizio.dat","w");
 	if(scelta=='1') /*Pentomino-R*/
     {
         imax=5;
-		p[0].x=0; p[0].y=1;
-		p[1].x=1; p[1].y=0;
-		p[2].x=1; p[2].y=1;
-		p[3].x=2; p[3].y=1;
-		p[4].x=2; p[4].y=2;
+		p[0].x=x0;   p[0].y=y0;
+		p[1].x=x0;   p[1].y=y0+1;
+		p[2].x=x0+1; p[2].y=y0+1;
+		p[3].x=x0;   p[3].y=y0-1;
+		p[4].x=x0-1; p[4].y=y0;
     }
     if(scelta=='2') /*Tetramino-T*/
     {
         imax=4;
-        p[0].x=0; p[0].y=1;
-		p[1].x=1; p[1].y=0;
-		p[2].x=1; p[2].y=1;
-		p[3].x=2; p[3].y=1;
+        p[0].x=x0;   p[0].y=y0;
+		p[1].x=x0-1; p[1].y=y0;
+		p[2].x=x0+1; p[2].y=y0;
+		p[3].x=x0;   p[3].y=y0-1;
     }
     for(i=0;i<imax;i++)
     {
@@ -53,8 +55,9 @@ void disegno() /*disegna una configurazione di punti*/
 
 void definizioni() /*definisce i parametri e la configurazione iniziali*/
 {
-    inizio=fopen("parametri.dat","r");
-    fscanf(inizio,"%li %li %li %c",&M,&N,&tmax,&scelta);
+    parametri=fopen("parametri.dat","r");
+    fscanf(parametri,"%d %d %d %c",&M,&N,&tmax,&scelta);
+    fclose(parametri);
     c=matrice(M,N);
     ctemp=matrice(M,N);
 	disegno();

@@ -63,57 +63,57 @@ q
 #Gioco della vita
 
 gnuplot
-set xrange [-1:21]
-set yrange [-1:21]
+set xrange [0:35]
+set yrange [0:35]
 unset xtics
 unset ytics
 unset title
 unset key
-plot "inizio.dat" u 1:2 pt 7 ps 1 lc "red"
+plot "inizio.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set term 'pdf' color
-set out 'inizio_M20_N20_tmax1_scelta1.pdf'
-plot "inizio.dat" u 1:2 pt 7 ps 1 lc "red"
+set out 'inizio-M35-N35-tmax1-scelta1.pdf'
+plot "inizio.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set out
 q
 
 gnuplot
-set xrange [-1:21]
-set yrange [-1:21]
+set xrange [0:35]
+set yrange [0:35]
 unset xtics
 unset ytics
 unset title
 unset key
-plot 'inizio.dat' u 1:2 pt 7 ps 1 lc "red"
+plot 'inizio.dat' u 1:2 pt 7 ps 0.5 lc "red"
 set term 'pdf' color
-set out 'inizio_M20_N20_tmax1_scelta2.pdf'
-plot 'inizio.dat' u 1:2 pt 7 ps 1 lc "red"
+set out 'inizio-M35-N35-tmax1-scelta2.pdf'
+plot 'inizio.dat' u 1:2 pt 7 ps 0.5 lc "red"
 set out
 q
 
 gnuplot
-set xrange [-1:21]
-set yrange [-1:21]
+set xrange [0:35]
+set yrange [0:35]
 unset xtics
 unset ytics
 unset title
 unset key
-plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+plot "fine.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set term 'pdf' color
-set out 'fine_M20_N20_tmax1_scelta1.pdf'
-plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+set out 'fine-M35-N35-tmax1-scelta1.pdf'
+plot "fine.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set out
 q
 
 gnuplot
-set xrange [-1:21]
-set yrange [-1:21]
+set xrange [0:35]
+set yrange [0:35]
 unset xtics
 unset ytics
 unset title
 unset key
-plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+plot "fine.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set term 'pdf' color
-set out 'fine_M20_N20_tmax1_scelta2.pdf'
-plot "fine.dat" u 1:2 pt 7 ps 1 lc "red"
+set out 'fine-M35-N35-tmax1-scelta2.pdf'
+plot "fine.dat" u 1:2 pt 7 ps 0.5 lc "red"
 set out
 q
