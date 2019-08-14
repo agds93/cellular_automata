@@ -20,12 +20,11 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 set(src_path "${CMAKE_SOURCE_DIR}/src/")
 message(STATUS "project_src_path=${src_path}")
 
-# Set source files list
-set(SOURCE_FILES 
-    ${src_path}main.c
-    ${src_path}life1.c
- )
+# Set executable
+set(SOURCE_FILES
+        ${src_path}main.c
+        ${src_path}life.c
+        ${src_path}automata.c
+        )
 message(STATUS "project_files_list=${SOURCE_FILES}")
-
-# Create executable (all source files directly in it)
 add_executable(cellular_automata ${SOURCE_FILES})
