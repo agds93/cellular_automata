@@ -23,7 +23,7 @@ message(STATUS "project_src_path=${src_path}")
 # Set source files list
 set(SOURCE_FILES 
     ${src_path}main.c
-)
+        src/life1.c)
 message(STATUS "project_files_list=${SOURCE_FILES}")
 
 # Create executable (all source files directly in it)
