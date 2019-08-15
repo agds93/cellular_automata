@@ -11,7 +11,7 @@ point p[10];
 
 void shape(int M,int N,int scelta)
 {
-    int nmax,n;
+    int nmax=0,n;
     if(scelta=='1') /*Pentomino-R*/
     {
         nmax=5;
@@ -21,6 +21,7 @@ void shape(int M,int N,int scelta)
         p[3].x=x0;   p[3].y=y0-1;
         p[4].x=x0-1; p[4].y=y0;
     }
+    else return;
     for(n=0;n<nmax;n++)
     {
         ctemp[p[n].x][p[n].y]=1;
@@ -82,5 +83,7 @@ int fun_life(int tmax,int M,int N,int scelta)
         }
     }
     fclose(results);
+    free_matrix(ctemp,M);
+    free_matrix(c,M);
     return 0;
 }

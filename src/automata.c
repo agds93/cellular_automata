@@ -27,5 +27,7 @@ int fun_automata(int tmax,int N,int scelta)
         for(i=0;i<N;i++) c[i]=ctemp[i];
     }
     fclose(results);
+    free(ctemp);
+    free(c);
     return 0;
 }
