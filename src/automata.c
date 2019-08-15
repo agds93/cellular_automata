@@ -17,10 +17,11 @@ int fun_automata(int tmax,int N,int scelta)
         for(i=0;i<N;i++) if(c[i]==1) fprintf(results,"%d %d\n",i-(int)(0.5*N),t);
         for(i=1;i<N-1;i++)
         {
-            if(scelta=='1') ctemp[i]=c[i-1]^(c[i]|c[i+1]);                    /*regola 30*/
-            else if(scelta=='2') ctemp[i]=c[i-1]^c[i+1];                      /*regola 90*/
-            else if(scelta=='3') ctemp[i]=(c[i-1]|c[i])^(c[i-1]&c[i]&c[i+1]); /*regola 110*/
-            else ctemp[i]=(c[i-1]^c[i+1])^c[i];                               /*regola 150*/
+            if(scelta==1) ctemp[i]=c[i-1]^(c[i]|c[i+1]);                    /*regola 30*/
+            else if(scelta==2) ctemp[i]=c[i-1]^c[i+1];                      /*regola 90*/
+            else if(scelta==3) ctemp[i]=(c[i-1]|c[i])^(c[i-1]&c[i]&c[i+1]); /*regola 110*/
+            else if(scelta==4) ctemp[i]=(c[i-1]^c[i+1])^c[i];               /*regola 150*/
+            else ctemp[i]=c[i-1]|c[i+1];                                    /*regola 250*/
         }
         for(i=0;i<N;i++) c[i]=ctemp[i];
     }
