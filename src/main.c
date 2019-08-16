@@ -6,6 +6,7 @@
 int main()
 {
     FILE *parameters;
+    int exit_code=0;
     int prog;
     int tmax,N,scelta;
     parameters=fopen("../in/parameters.dat","r");
@@ -16,7 +17,7 @@ int main()
         fscanf(parameters,"%d",&tmax);
         fscanf(parameters,"%d",&N);
         fscanf(parameters,"%d",&scelta);
-        fun_automata(tmax,N,scelta);
+        exit_code = fun_automata(tmax,N,scelta);
     }
     else if(prog==2)
     {
@@ -25,13 +26,10 @@ int main()
         fscanf(parameters,"%d",&M);
         fscanf(parameters,"%d",&N);
         fscanf(parameters,"%d",&scelta);
-        fun_life(tmax,M,N,scelta);
+        exit_code = fun_life(tmax,M,N,scelta);
     }
     else
-    {
-        fclose(parameters);
-        return 1;
-    }
+        exit_code = 1;
     fclose(parameters);
-    return 0;
+    return exit_code;
 }
