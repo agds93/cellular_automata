@@ -17,8 +17,8 @@ void shape(int M,int N,int scelta)
         p[0].x=x0;   p[0].y=y0;
         p[1].x=x0;   p[1].y=y0+1;
         p[2].x=x0+1; p[2].y=y0+1;
-        p[3].x=x0;   p[3].y=y0-1;
-        p[4].x=x0-1; p[4].y=y0;
+        p[3].x=x0-1; p[3].y=y0;
+        p[4].x=x0;   p[4].y=y0-1;
     }
     else return;
     for(n=0;n<nmax;n++)

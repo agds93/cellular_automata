@@ -6,6 +6,7 @@ http://www.gnuplotting.org/scale-paper-like-grid/
 https://lwn.net/Articles/723818/
 https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gnuplot
 https://stackoverflow.com/questions/14977969/doing-calculations-in-gnuplots-plot-command
+https://stackoverflow.com/questions/9536582/gnuplot-plotting-data-from-a-file-up-to-some-row
 
 
 ##Cellular Automata
@@ -22,9 +23,31 @@ set out
 q
 
 
+
 ##Pentomino-R:
 
-#Tentativo 3 (9x9) OK fine.dat:
+#Su carta millimetrata:
+gnuplot
+unset key
+unset title
+set style line 11 lc rgb '#ffffff' lt 1
+set border 0 back ls 11
+set tics out nomirror scale 0,0.001
+set format ''
+set mxtics
+set mytics
+set style line 12 lc rgb '#ddccdd' lt 1 lw 1.5
+set style line 13 lc rgb '#ddccdd' lt 1 lw 0.5
+set grid xtics mxtics ytics mytics back ls 12, ls 13
+set size square
+plot "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 1 lc 'blue'
+set term pdf
+set out 'pentominoR.pdf'
+replot
+set out
+q
+
+#Cerchi nei quadrati (9x9):
 gnuplot
 unset key
 unset title
@@ -35,79 +58,10 @@ set xtic format ""
 set ytic format ""
 set grid lt -1
 set tics scale 0
-plot 'results.dat' u ($1+0.5):($2+0.5) pt 7 ps 2 lc 'blue'
+plot "<(sed -n '1,5p' results.dat)" u ($1+0.5):($2+0.5) pt 7 ps 2 lc 'blue'
 set term pdf
 set out 'pentominoR.pdf'
 replot
 set out
 q
 
-gcc -o life_semplice.exe life_semplice.c
-./life_semplice.exe
-gnuplot
-unset key
-unset title
-set xrange [0:35]
-set yrange [0:35]
-plot 'results.dat' u 1:2 pt 7 ps 1 lc 'blue'
-
-
-#Tentativo 3 (9x9) OK:
-gnuplot
-unset key
-unset title
-set size square
-set xrange [0:9]
-set yrange [0:9]
-set xtic format ""
-set ytic format ""
-set grid lt -1
-set tics scale 0
-plot 'results.dat' u ($1+0.5):($2+0.5) pt 7 ps 2 lc 'blue'
-set term pdf
-set out 'pentominoR.pdf'
-replot
-set out
-q
-
-
-
-#Tentativo 2 (9x9):
-gnuplot
-unset key
-unset title
-set grid back
-set size square
-#set xrange [0:8]
-#set yrange [0:8]
-set xrange [0:9]
-set yrange [0:9]
-#set xtic format ""
-#set ytic format ""
-#plot 'results.dat' u 1:2 pt 7 ps 2 lc 'blue'
-plot 'results.dat' u 1:2 pt 7 ps 2 lc 'blue'
-set term pdf
-set out 'pentominoR.pdf'
-replot
-set out
-q
-
-#Tentativo 1 (9x9):
-gnuplot
-unset key
-unset title
-set border linewidth 1.5
-set style line 1 lc 'blue' pt 7 ps 1.5 lt 1 lw 2
-set style line 11 lc rgb '#808080' lt 1
-set border 3 back ls 11
-set tics nomirror out scale 0.75
-set style line 12 lc rgb'#808080' lt 0 lw 1
-set grid back ls 12
-set xrange [0:8]
-set yrange [0:8]
-plot 'results.dat' u 1:2 w p ls 1
-set term pdf
-set out 'pentominoR.pdf'
-plot 'results.dat' u 1:2 w p ls 1
-set out
-q
