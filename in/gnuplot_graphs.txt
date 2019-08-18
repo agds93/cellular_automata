@@ -8,6 +8,8 @@ https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gn
 https://stackoverflow.com/questions/14977969/doing-calculations-in-gnuplots-plot-command
 https://stackoverflow.com/questions/9536582/gnuplot-plotting-data-from-a-file-up-to-some-row
 
+http://folk.uio.no/inf3330/scripting/doc/gnuplot/Kawano/index-e.html
+
 
 ##Cellular Automata
 gnuplot
@@ -25,6 +27,21 @@ q
 
 
 ##Pentomino-R:
+
+gnuplot
+unset key
+unset title
+set size square
+set xrange [2:6]
+set yrange [2:6]
+#unset xtic
+#unset ytic
+plot "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 0.5 lc 'black'
+set term pdf
+set out 'pentominoR.pdf'
+replot
+set out
+q
 
 #Su carta millimetrata:
 gnuplot
