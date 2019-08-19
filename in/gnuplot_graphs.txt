@@ -27,71 +27,46 @@ q
 
 
 
-##Pentomino-R:
-
+##Pentomino-R M=N=149 t=0:
 gnuplot
 unset key
 unset title
+unset tics
 set size square
-set size 0.5,0.5
-plot [0:8][0:8] "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 0.5 lc 'black'
+#set size 0.5,0.5
+plot [69:80][69:80] "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 1 lc 'black'
 set term pdf
-set out 'pentominoR.pdf'
+set out 'pentominoR_M149_N149_t0.pdf'
 replot
 set out
 q
 
+##Pentomino-R M=N=149 t=10:
 gnuplot
 unset key
 unset title
+unset tics
 set size square
-set xrange [2:6]
-set yrange [2:6]
-#unset xtic
-#unset ytic
-plot "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 0.5 lc 'black'
+plot [67:80][67:80] "<(sed -n '97,107p' results.dat)" u 1:2 pt 7 ps 1 lc 'black'
 set term pdf
-set out 'pentominoR.pdf'
+set out 'pentominoR_M149_N149_t10.pdf'
 replot
 set out
 q
 
-#Su carta millimetrata:
+##Pentomino-R M=N=149 t=48:
 gnuplot
 unset key
 unset title
-set style line 11 lc rgb '#ffffff' lt 1
-set border 0 back ls 11
-set tics out nomirror scale 0,0.001
-set format ''
-set mxtics
-set mytics
-set style line 12 lc rgb '#ddccdd' lt 1 lw 1.5
-set style line 13 lc rgb '#ddccdd' lt 1 lw 0.5
-set grid xtics mxtics ytics mytics back ls 12, ls 13
-set size square
-plot "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 1 lc 'blue'
+#unset tics
+set view equal xy
+set xrange [51:83]
+set yrange [70:85]
+plot "<(sed -n '1240,1284p' results.dat)" u 1:2 pt 7 ps 1 lc 'black'
 set term pdf
-set out 'pentominoR.pdf'
+set out 'pentominoR_M149_N149_t48.pdf'
 replot
 set out
 q
 
-#Cerchi nei quadrati (9x9):
-gnuplot
-unset key
-unset title
-set size square
-set xrange [0:9]
-set yrange [0:9]
-set xtic format ""
-set ytic format ""
-set grid lt -1
-set tics scale 0
-plot "<(sed -n '1,5p' results.dat)" u ($1+0.5):($2+0.5) pt 7 ps 2 lc 'blue'
-set term pdf
-set out 'pentominoR.pdf'
-replot
-set out
-q
-
+##Pentomino-R M=N=149 t=1103:
