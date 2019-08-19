@@ -9,6 +9,7 @@ https://stackoverflow.com/questions/14977969/doing-calculations-in-gnuplots-plot
 https://stackoverflow.com/questions/9536582/gnuplot-plotting-data-from-a-file-up-to-some-row
 
 http://folk.uio.no/inf3330/scripting/doc/gnuplot/Kawano/index-e.html
+http://gnuplot-tricks.blogspot.com/2009/08/changing-aspect-ratio-of-axes.html
 
 
 ##Cellular Automata
@@ -27,6 +28,18 @@ q
 
 
 ##Pentomino-R:
+
+gnuplot
+unset key
+unset title
+set size square
+set size 0.5,0.5
+plot [0:8][0:8] "<(sed -n '1,5p' results.dat)" u 1:2 pt 7 ps 0.5 lc 'black'
+set term pdf
+set out 'pentominoR.pdf'
+replot
+set out
+q
 
 gnuplot
 unset key
