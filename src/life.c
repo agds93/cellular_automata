@@ -4,27 +4,26 @@
 
 int **c,**ctemp;
 FILE *results;
-point p[10];
 
-void shape(int M,int N,int scelta)
+void shape(int M, int N, int scelta)
 {
-    int nmax=0,n;
+    /*
+     * ATTENZIONE: se la matrice MxN non può contentere la figura, questa funzione va in SEGFAULT !!
+     */
+
+    if(scelta < 0 || scelta >= N_FIGURE)
+        return;
+
     int x0 = (int)(0.5*M);
     int y0 = (int)(0.5*N);
-    if(scelta==1) /*Pentomino-R*/
+
+    int x, y;
+    for(int n = 0; n < N_POINTS[scelta]; n++)
     {
-        nmax=5;
-        p[0].x=x0;   p[0].y=y0;
-        p[1].x=x0;   p[1].y=y0+1;
-        p[2].x=x0+1; p[2].y=y0+1;
-        p[3].x=x0-1; p[3].y=y0;
-        p[4].x=x0;   p[4].y=y0-1;
-    }
-    else return;
-    for(n=0;n<nmax;n++)
-    {
-        c[p[n].x][p[n].y]=1;
-        fprintf(results,"%d %d %d\n",p[n].x,p[n].y,0);
+        x = FIGURES[scelta][n].x + x0;
+        y = FIGURES[scelta][n].y + y0;
+        c[x][y]=1;
+        fprintf(results,"%d %d %d\n",x,y,0);
     }
 }
 

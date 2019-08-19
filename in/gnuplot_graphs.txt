@@ -58,7 +58,7 @@ q
 gnuplot
 unset key
 unset title
-#unset tics
+unset tics
 set view equal xy
 set xrange [51:83]
 set yrange [70:85]
@@ -70,3 +70,16 @@ set out
 q
 
 ##Pentomino-R M=N=149 t=1103:
+gnuplot
+unset key
+unset title
+#unset tics
+set view equal xy
+set xrange [30:145]
+set yrange [40:95]
+plot "<(sed -n '186237,186346p' results.dat)" u 1:2 pt 7 ps 0.30 lc 'black'
+set term pdf
+set out 'pentominoR_M149_N149_t1103.pdf'
+replot
+set out
+q
