@@ -91,6 +91,9 @@ https://stackoverflow.com/questions/30522035/gnuplot-conditional-plotting-with-i
 gnuplot
 unset key
 unset title
+#set tics scale 0
+#set tics format ""
+#set grid mxtics mytics back
 unset tics
 set size square
 set xrange [64:84]
