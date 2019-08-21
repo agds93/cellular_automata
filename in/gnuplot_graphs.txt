@@ -10,6 +10,7 @@ https://stackoverflow.com/questions/9536582/gnuplot-plotting-data-from-a-file-up
 
 http://folk.uio.no/inf3330/scripting/doc/gnuplot/Kawano/index-e.html
 http://gnuplot-tricks.blogspot.com/2009/08/changing-aspect-ratio-of-axes.html
+https://stackoverflow.com/questions/30522035/gnuplot-conditional-plotting-with-if
 
 
 ##Cellular Automata
@@ -24,7 +25,6 @@ set out 'r.pdf'
 replot
 set out
 q
-
 
 
 ##Pentomino-R M=N=149 t=0:
@@ -83,3 +83,73 @@ set out 'pentominoR_M149_N149_t1103.pdf'
 replot
 set out
 q
+
+
+https://stackoverflow.com/questions/30522035/gnuplot-conditional-plotting-with-if
+
+##Tetramino_T M=N=149 t=0,1,2,3,4,5,6,7,8,9,10:
+gnuplot
+unset key
+unset title
+unset tics
+set size square
+set xrange [64:84]
+set yrange [64:84]
+set style line 1 pt 7 ps 0.8 lc rgb 'blue'
+plot "results.dat" u 1:($3 == 0 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t0.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 1 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t1.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 2 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t2.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 3 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t3.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 4 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t4.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 5 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t5.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 6 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t6.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 7 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t7.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 8 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t8.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 9 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t9.pdf'
+replot
+set out
+plot "results.dat" u 1:($3 == 10 ? $2 : 1/0) ls 1
+set term pdf
+set out 'tetraminoT_M149_N149_t10.pdf'
+replot
+set out
+q
+

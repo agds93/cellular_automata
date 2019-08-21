@@ -5,23 +5,20 @@
 int **c,**ctemp;
 FILE *results;
 
-void shape(int M, int N, int scelta)
+void shape(int M,int N,int scelta)
 {
-    /*
-     * ATTENZIONE: se la matrice MxN non può contentere la figura, questa funzione va in SEGFAULT !!
-     */
+    /* ATTENZIONE: se la matrice MxN non può contentere la figura, questa funzione va in SEGFAULT! */
 
-    if(scelta < 0 || scelta >= N_FIGURE)
-        return;
+    if(scelta<0 || scelta>=N_FIGURE) return;
 
-    int x0 = (int)(0.5*M);
-    int y0 = (int)(0.5*N);
+    int x0=(int)(0.5*M);
+    int y0=(int)(0.5*N);
 
-    int x, y;
-    for(int n = 0; n < N_POINTS[scelta]; n++)
+    int x,y;
+    for(int n=0;n<N_POINTS[scelta];n++)
     {
-        x = FIGURES[scelta][n].x + x0;
-        y = FIGURES[scelta][n].y + y0;
+        x = FIGURES[scelta][n].x+x0;
+        y = FIGURES[scelta][n].y+y0;
         c[x][y]=1;
         fprintf(results,"%d %d %d\n",x,y,0);
     }

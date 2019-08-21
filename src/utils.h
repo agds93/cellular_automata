@@ -10,7 +10,7 @@ typedef struct point{
 
 int N_POINTS[N_FIGURE] = {
         5, // numero punti figura 1
-        5 // numero punti figura 2
+        4 // numero punti figura 2
 };
 point FIGURES[N_FIGURE][MAX_POINTS] = {
         { // Pentomino R (scelta = 0)
@@ -20,10 +20,9 @@ point FIGURES[N_FIGURE][MAX_POINTS] = {
                 {-1, 0 },
                 {0, -1 }
         },
-        { // Pentomino R (scelta = 1)
+        { // Tetramino (scelta = 1)
                 {0, 0 },
-                {0, 1 },
-                {1, 1 },
+                {1, 0 },
                 {-1, 0 },
                 {0, -1 }
         },
