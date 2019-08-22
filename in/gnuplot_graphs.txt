@@ -4,13 +4,13 @@ http://www.gnuplotting.org/configuration/
 http://www.gnuplotting.org/interpolation-of-heat-maps/
 http://www.gnuplotting.org/scale-paper-like-grid/
 https://lwn.net/Articles/723818/
-https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gnuplot
 https://stackoverflow.com/questions/14977969/doing-calculations-in-gnuplots-plot-command
 https://stackoverflow.com/questions/9536582/gnuplot-plotting-data-from-a-file-up-to-some-row
 
 http://folk.uio.no/inf3330/scripting/doc/gnuplot/Kawano/index-e.html
 http://gnuplot-tricks.blogspot.com/2009/08/changing-aspect-ratio-of-axes.html
 https://stackoverflow.com/questions/30522035/gnuplot-conditional-plotting-with-if
+https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gnuplot
 
 
 ##Cellular Automata
@@ -36,8 +36,7 @@ set tics format ""
 set xtics 1
 set ytics 1
 set grid xtics ytics
-#unset tics
-set size square
+set size ratio -1
 set xrange [64:84]
 set yrange [64:84]
 set style line 1 pt 7 ps 0.8 lc rgb 'blue'
@@ -57,8 +56,7 @@ set tics format ""
 set xtics 1
 set ytics 1
 set grid xtics ytics
-#unset tics
-set size square
+set size ratio -1
 set xrange [64:84]
 set yrange [64:84]
 set style line 1 pt 7 ps 0.8 lc rgb 'blue'
@@ -78,9 +76,9 @@ set tics format ""
 set xtics 1
 set ytics 1
 set grid xtics ytics
+set size ratio -1
 set xrange [48:85]
 set yrange [68:85]
-set size ratio -1
 set style line 1 pt 7 ps 0.8 lc rgb 'blue'
 plot "results.dat" u 1:($3 == 48 ? $2 : 1/0) ls 1
 set term pdf
@@ -90,20 +88,45 @@ set out
 q
 
 
-##Pentomino-R M=N=149 t=1103:
+##Pentomino-R M=N=149 t=1103 (con punti su angoli delle celle del reticolo):
 gnuplot
 unset key
 unset title
-#unset tics
-set view equal xy
-set xrange [30:145]
-set yrange [40:95]
-plot "<(sed -n '186237,186346p' results.dat)" u 1:2 pt 7 ps 0.30 lc 'black'
+set tics scale 0
+set tics format ""
+set xtics 1
+set ytics 1
+set xrange [31:143]
+set yrange [40:94]
+set size ratio -1
+set grid lt -1
+set style line 1 pt 7 ps 0.28 lc rgb 'blue'
+plot "results.dat" u 1:($3 == 1103 ? $2 : 1/0) ls 1
 set term pdf
 set out 'pentominoR_M149_N149_t1103.pdf'
 replot
 set out
 q
+##Pentomino-R M=N=149 t=1103 (con punti dentro le celle del reticolo):
+gnuplot
+unset key
+unset title
+set tics scale 0
+set tics format ""
+set xtics 1
+set ytics 1
+set xrange [31:144]
+set yrange [40:95]
+set size ratio -1
+set grid lt -1
+set style line 1 pt 7 ps 0.28 lc rgb 'blue'
+plot "results.dat" u ($1+0.5):($3 == 1103 ? ($2+0.5) : 1/0) ls 1
+set term pdf
+set out 'pentominoR_M149_N149_t1103.pdf'
+replot
+set out
+q
+
 
 
 https://stackoverflow.com/questions/30522035/gnuplot-conditional-plotting-with-if
