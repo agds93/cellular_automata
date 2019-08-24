@@ -26,6 +26,28 @@ replot
 set out
 q
 
+https://stackoverflow.com/questions/31810947/position-of-tic-marks-in-gnuplot
+https://stackoverflow.com/questions/21532529/gnuplot-grid-with-alternate-line-styles
+
+#Cellular Automata (tempi piccoli):
+gnuplot
+unset key
+unset title
+set size ratio -1
+set tics out
+set xtics 1
+set ytics 1
+set style line 1 pt 5 ps 1.5 lc rgb 'black'
+#set style line 2 lc 'grey'
+#set grid back ls 2
+set grid lt -1
+plot 'results.dat' u ($1+0.5):($2+0.5) ls 1
+set term pdf
+set out 'r.pdf'
+replot
+set out
+q
+
 
 ##Pentomino-R M=N=149 t=0:
 gnuplot
