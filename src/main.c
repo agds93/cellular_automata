@@ -8,7 +8,7 @@ int main()
     FILE *parameters;
     int exit_code=0;
     int prog;
-    int tmax,N,scelta;
+    int tmax,N,scelta,caso;
     parameters=fopen("../in/parameters.dat","r");
     if(parameters==NULL) return 1;
     fscanf(parameters,"%d",&prog);
@@ -17,7 +17,8 @@ int main()
         fscanf(parameters,"%d",&tmax);
         fscanf(parameters,"%d",&N);
         fscanf(parameters,"%d",&scelta);
-        exit_code = fun_automata(tmax,N,scelta);
+        fscanf(parameters,"%d",&caso);
+        exit_code = fun_automata(tmax,N,scelta,caso);
     }
     else if(prog==2)
     {

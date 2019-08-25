@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utils.h"
 
-int fun_automata(int tmax,int N,int scelta)
+int fun_automata(int tmax,int N,int scelta,int caso)
 {
     int *c,*ctemp;
     FILE *results;

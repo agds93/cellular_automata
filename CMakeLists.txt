@@ -22,9 +22,12 @@ message(STATUS "project_src_path=${src_path}")
 
 # Set executable
 set(SOURCE_FILES
+        ${src_path}utils.c
+        ${src_path}utils.h
+        ${src_path}life.h
+        ${src_path}automata.h
         ${src_path}main.c
         ${src_path}life.c
-        ${src_path}automata.c
-        ${src_path}utils.c src/automata.h src/life.h src/utils.h)
+        ${src_path}automata.c)
 message(STATUS "project_files_list=${SOURCE_FILES}")
 add_executable(cellular_automata ${SOURCE_FILES})
