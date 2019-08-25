@@ -16,3 +16,8 @@ void free_matrix(int **matrix, int M)
     for(i=0;i<M;i++) free(matrix[i]);
     free(matrix);
 }
+
+int cas_int(int min,int max) /*genera un numero casuale intero*/
+{
+    return min+rand()%(max-min+1);
+}

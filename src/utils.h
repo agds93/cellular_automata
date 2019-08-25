@@ -32,4 +32,6 @@ int** def_matrix(int M,int N);
 
 void free_matrix(int **matrix,int M);
 
+int cas_int(int min,int max);
+
 #endif //CELLULAR_AUTOMATA_UTILS_H
