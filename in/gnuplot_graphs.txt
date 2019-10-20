@@ -20,8 +20,20 @@ unset title
 unset xtic
 unset ytic
 plot 'results.dat' u 1:2 pt 7 ps 0.03 lc 'blue'
-set term pdf
-set out 'r.pdf'
+set term png
+set out 'r.png'
+replot
+set out
+q
+
+gnuplot
+unset key
+unset title
+unset xtic
+unset ytic
+plot 'results.dat' u 1:2 pt 7 ps 0.03 lc 'blue'
+set term latex
+set out 'r.tex'
 replot
 set out
 q
