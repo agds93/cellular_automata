@@ -5,6 +5,30 @@
 int **c,**ctemp;
 FILE *results;
 
+typedef struct point{
+    int x,y;
+}point;
+
+int N_POINTS[N_FIGURE]= {
+        5, // numero punti figura 1
+        4 // numero punti figura 2
+};
+point FIGURES[N_FIGURE][MAX_POINTS] = {
+        { // Pentomino R (scelta = 0)
+                {0, 0 },
+                {0, 1 },
+                {1, 1 },
+                {-1, 0 },
+                {0, -1 },
+        },
+        { // Tetramino (scelta = 1)
+                {0, 0 },
+                {1, 0 },
+                {-1, 0 },
+                {0, -1 },
+        }
+};
+
 void shape(int M,int N,int scelta)
 {
     /* ATTENZIONE: se la matrice MxN non può contenere la figura, questa funzione va in SEGFAULT! */
