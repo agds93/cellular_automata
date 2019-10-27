@@ -31,14 +31,9 @@ int fun_automata(int tmax,int N,int scelta,int caso)
         for(i=0;i<N;i++) if(c[i] == 1) fprintf(results,"%d %d\n",i-(int)(0.5*N),t);
         for(i=1;i<N-1;i++)
         {
-            if(scelta == 30) ctemp[i] = c[i-1]^(c[i]|c[i+1]);
-            else if(scelta == 32) ctemp[i] = c[i-1]&(~c[i])&c[i+1];
-            else if(scelta == 54) ctemp[i] = (c[i-1]|c[i+1])^c[i];
-            else if(scelta == 90) ctemp[i] = c[i-1]^c[i+1];
-            else if(scelta == 110) ctemp[i] = (c[i-1]|c[i])^(c[i-1]&c[i]&c[i+1]);
-            else if(scelta == 150) ctemp[i] = (c[i-1]^c[i+1])^c[i];
+            if(scelta == 110) ctemp[i] = ((~c[i-1])&c[i]&c[i+1])^c[i]^c[i+1];
+            else if(scelta == 150) ctemp[i] = c[i-1]^c[i]^c[i+1];
             else if(scelta == 184) ctemp[i] = c[i-1]^(c[i-1]&c[i])^(c[i]&c[i+1]);
-            else if(scelta == 250) ctemp[i] = c[i-1]|c[i+1];
             else continue;
         }
         for(i=0;i<N;i++) c[i] = ctemp[i];
