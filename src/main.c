@@ -29,7 +29,6 @@ int main()
         fscanf(parameters,"%d",&M);
         fscanf(parameters,"%d",&N);
         fscanf(parameters,"%d",&scelta);
-        //fscanf(parameters,"%d",&caso);
         exit_code = fun_life(tmax,M,N,scelta);
     }
     else
