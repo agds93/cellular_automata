@@ -20,8 +20,8 @@ unset title
 unset xtic
 unset ytic
 plot 'results.dat' u 1:2 pt 7 ps 0.03 lc 'blue'
-set term png
-set out 'r.png'
+set term pdf
+set out 'r.pdf'
 replot
 set out
 q
@@ -81,7 +81,7 @@ replot
 set out
 q
 
-#Versione PNG
+#Versione Migliore
 gnuplot
 unset key
 unset title
@@ -93,10 +93,10 @@ set grid lt -1
 set size ratio -1
 set xrange [68:81]
 set yrange [68:81]
-set style line 1 pt 7 ps 3.5 lc rgb 'blue'
+set style line 1 pt 7 ps 1.5 lc rgb 'blue'
 plot "results.dat" u ($1+0.50000):($3 == 0 ? ($2+0.50000) : 1/0) ls 1
-set term png
-set out 'pentominoR_M149_N149_t0.png'
+set term pdf
+set out 'pentominoR_M149_N149_t0.pdf'
 replot
 set out
 q
@@ -122,7 +122,7 @@ replot
 set out
 q
 
-#Versione PNG
+#Versione Migliore
 gnuplot
 unset key
 unset title
@@ -134,10 +134,10 @@ set grid lt -1
 set size ratio -1
 set xrange [68:81]
 set yrange [68:81]
-set style line 1 pt 7 ps 3.5 lc rgb 'blue'
+set style line 1 pt 7 ps 1.5 lc rgb 'blue'
 plot "results.dat" u ($1+0.50000):($3 == 10 ? ($2+0.50000) : 1/0) ls 1
-set term png
-set out 'pentominoR_M149_N149_t10.png'
+set term pdf
+set out 'pentominoR_M149_N149_t10.pdf'
 replot
 set out
 q
@@ -162,7 +162,7 @@ replot
 set out
 q
 
-#Versione PNG
+#Versione Migliore
 gnuplot
 unset key
 unset title
@@ -174,10 +174,10 @@ set grid lt -1
 set size ratio -1
 set xrange [48:86]
 set yrange [68:86]
-set style line 1 pt 7 ps 2 lc rgb 'blue'
+set style line 1 pt 7 ps 1 lc rgb 'blue'
 plot "results.dat" u ($1+0.50000):($3 == 48 ? ($2+0.50000) : 1/0) ls 1
-set term png
-set out 'pentominoR_M149_N149_t48.png'
+set term pdf
+set out 'pentominoR_M149_N149_t48.pdf'
 replot
 set out
 q
@@ -226,7 +226,7 @@ replot
 set out
 q
 
-#Versione PNG
+#Versione Migliore
 gnuplot
 unset key
 unset title
@@ -238,9 +238,10 @@ set xrange [32:143]
 set yrange [41:94]
 set size ratio -1
 set grid lt -1
-plot "results.dat" u ($1+0.5000):($3 == 1103 ? ($2+0.5000) : 1/0) pt 7 ps 0.8 lc rgb 'blue'
-set term png
-set out 'pentominoR_M149_N149_t1103.png'
+set style line 1 pt 7 ps 0.28 lc rgb 'blue'
+plot "results.dat" u ($1+0.5000):($3 == 1103 ? ($2+0.5000) : 1/0) ls 1
+set term pdf
+set out 'pentominoR_M149_N149_t1103.pdf'
 replot
 set out
 q
@@ -275,7 +276,7 @@ do for [it=0:10]{
 }
 q
 
-#Versione PNG
+#Versione Migliore
 gnuplot
 unset key
 unset title
@@ -287,10 +288,10 @@ set grid lt -1
 set size square
 set xrange [68:81]
 set yrange [68:81]
-set style line 1 pt 7 ps 3.5 lc rgb 'blue'
-set term png
+set style line 1 pt 7 ps 1.5 lc rgb 'blue'
+set term pdf
 do for [it=0:10]{
- outfile=sprintf('tetraminoT_M149_N149_t%d.png',it)
+ outfile=sprintf('tetraminoT_M149_N149_t%d.pdf',it)
  set out outfile
  plot "results.dat" u ($1+0.5):($3 == it ? ($2+0.5) : 1/0) ls 1
 }
