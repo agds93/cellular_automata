@@ -17,9 +17,9 @@ https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gn
 gnuplot
 unset key
 unset title
-unset xtic
-unset ytic
-plot 'results.dat' u 1:2 pt 7 ps 0.03 lc 'blue'
+set xlabel "i"
+set ylabel "t"
+plot 'results.dat' u 1:2 pt 5 ps 0.03 lc 'blue'
 set term pdf
 set out 'r.pdf'
 replot
